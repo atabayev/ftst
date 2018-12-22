@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activityBg"
+    tools:context=".ui.AboutNewOrderActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dim_10sp"
+            android:paddingEnd="@dimen/dim_10sp"
+            android:paddingLeft="@dimen/dim_10sp"
+            android:paddingRight="@dimen/dim_10sp"
+            android:paddingStart="@dimen/dim_10sp"
+            android:paddingTop="@dimen/dim_10sp"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:background="@color/tvTextColor"
+                android:paddingEnd="40sp"
+                android:paddingLeft="40sp"
+                android:paddingRight="40sp"
+                android:paddingStart="40sp">
+
+                <TextView
+                    android:id="@+id/aoID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:layout_marginStart="@dimen/dim_8sp"
+                    android:text="@string/aoa_id"
+                    android:textColor="@color/activityBg"
+                    android:textSize="@dimen/dim_14sp" />
+
+                <TextView
+                    android:id="@+id/aoIdText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:layout_marginStart="@dimen/dim_10sp"
+                    android:textColor="@color/activityBg"
+                    android:text="20180306301"
+                    android:textSize="@dimen/dim_14sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/tvHintTextColor"
+                android:paddingEnd="40sp"
+                android:paddingLeft="40sp"
+                android:paddingRight="40sp"
+                android:paddingStart="40sp">
+
+                <TextView
+                    android:id="@+id/aoDeadline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:layout_marginStart="@dimen/dim_8sp"
+                    android:text="@string/aoa_deadline"
+                    android:textColor="@color/activityBg"
+                    android:textSize="@dimen/dim_14sp" />
+
+                <TextView
+                    android:id="@+id/aoDeadlineText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:layout_marginStart="@dimen/dim_10sp"
+                    android:textColor="@color/activityBg"
+                    android:text="10.09.2018"
+                    android:textSize="@dimen/dim_14sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/tvTextColor"
+                android:paddingEnd="40sp"
+                android:paddingLeft="40sp"
+                android:paddingRight="40sp"
+                android:paddingStart="40sp">
+
+                <TextView
+                    android:id="@+id/aoLanguage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:layout_marginStart="@dimen/dim_8sp"
+                    android:text="@string/aoa_language"
+                    android:textColor="@color/activityBg"
+                    android:textSize="@dimen/dim_14sp" />
+
+                <TextView
+                    android:id="@+id/aoLanguageText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:layout_marginStart="@dimen/dim_10sp"
+                    android:textColor="@color/activityBg"
+                    android:text="Русский - Английский"
+                    android:textSize="@dimen/dim_14sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/tvHintTextColor"
+                android:paddingEnd="40sp"
+                android:paddingLeft="40sp"
+                android:paddingRight="40sp"
+                android:paddingStart="40sp">
+
+                <TextView
+                    android:id="@+id/aoDirection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:layout_marginStart="@dimen/dim_8sp"
+                    android:text="@string/aoa_direction"
+                    android:textColor="@color/activityBg"
+                    android:textSize="@dimen/dim_14sp" />
+
+                <TextView
+                    android:id="@+id/aoDirectionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:layout_marginStart="@dimen/dim_10sp"
+                    android:text="ИТ, Политика"
+                    android:textColor="@color/activityBg"
+                    android:textSize="@dimen/dim_14sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/tvTextColor"
+                android:paddingEnd="40sp"
+                android:paddingLeft="40sp"
+                android:paddingRight="40sp"
+                android:paddingStart="40sp">
+
+                <TextView
+                    android:id="@+id/aoPageCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:layout_marginStart="@dimen/dim_8sp"
+                    android:text="@string/aoa_page_count"
+                    android:textColor="@color/activityBg"
+                    android:textSize="@dimen/dim_14sp" />
+
+                <TextView
+                    android:id="@+id/aoPageCountText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:layout_marginStart="@dimen/dim_10sp"
+                    android:text="00 стр."
+                    android:textColor="@color/activityBg"
+                    android:textSize="@dimen/dim_14sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/tvHintTextColor"
+                android:paddingEnd="40sp"
+                android:paddingLeft="40sp"
+                android:paddingRight="40sp"
+                android:paddingStart="40sp">
+
+                <TextView
+                    android:id="@+id/aoPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:layout_marginStart="@dimen/dim_8sp"
+                    android:text="@string/aoa_price"
+                    android:textColor="@color/activityBg"
+                    android:textSize="@dimen/dim_14sp" />
+
+                <TextView
+                    android:id="@+id/aoPriceText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:layout_marginStart="@dimen/dim_10sp"
+                    android:text="00000 тенге"
+                    android:textColor="@color/activityBg"
+                    android:textSize="@dimen/dim_14sp" />
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/ao_btn_dwn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:layout_marginEnd="30sp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:layout_marginStart="30sp"
+            android:layout_marginTop="15sp"
+            android:background="@drawable/bg_btn"
+            android:paddingBottom="5sp"
+            android:paddingEnd="5sp"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            android:paddingStart="5sp"
+            android:paddingTop="5sp"
+            android:text="@string/aoa_btn_download"
+            android:textColor="@color/btnTextColor" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2sp"
+            android:layout_marginBottom="30sp"
+            android:layout_marginEnd="10sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="30sp"
+            android:background="@color/colorAccent"/>
+
+        <Button
+            android:id="@+id/ao_btn_accept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15sp"
+            android:layout_marginEnd="30sp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:layout_marginStart="30sp"
+            android:layout_marginTop="@dimen/dim_10sp"
+            android:background="@drawable/bg_btn_accept"
+            android:paddingBottom="5sp"
+            android:paddingEnd="5sp"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            android:paddingStart="5sp"
+            android:paddingTop="5sp"
+            android:text="@string/aoa_btn_accept"
+            android:textColor="@color/btnTextColor" />
+
+        <Button
+            android:id="@+id/ao_btn_skip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:layout_marginEnd="30sp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:layout_marginStart="30sp"
+            android:layout_marginTop="15sp"
+            android:background="@drawable/bg_btn_skip"
+            android:paddingBottom="5sp"
+            android:paddingEnd="5sp"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            android:paddingStart="5sp"
+            android:paddingTop="5sp"
+            android:text="@string/aoa_btn_skip"
+            android:textColor="@color/btnTextColor" />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

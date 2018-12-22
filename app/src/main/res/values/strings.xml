@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">FTST</string>
+    <string name="enter_login">Введите логин</string>
+    <string name="enter_pswd">Введите пароль</string>
+    <string name="btn_enter">Войти</string>
+
+    <string name="auth_error">Ошибка аутентификаций</string>
+    <string name="auth_denied">Неправильный логин или пароль</string>
+
+    <string name="no_internet">Нет доступа к сети</string>
+
+    <!--About Order-->
+    <string name="aoa_btn_accept">Принять</string>
+    <string name="aoa_btn_skip">Отказаться</string>
+    <string name="aoa_btn_download">Отправить файлы заказа на почту</string>
+    <string name="aoa_btn_finish">Завершить проект</string>
+    <string name="aoa_id">ID проекта: </string>
+    <string name="aoa_deadline">Дата сдачи проекта: </string>
+    <string name="aoa_language">Язык перевода: </string>
+    <string name="aoa_direction">Направление текста: </string>
+    <string name="aoa_page_count">Количество страниц: </string>
+    <string name="aoa_price">Цена за проект: </string>
+    <string name="aoa_pages">стр.</string>
+    <string name="aoa_money_currency">тг.</string>
+
+    <!--Main-->
+    <string name="main_no_orders">Нет проектов</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bn_menu1_title">down</string>
+    <string name="bn_menu2_title">up</string>
+    <string name="bn_menu3_title">alert</string>
+    <string name="tab_new">Новые</string>
+    <string name="tab_accepted">Принятые</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_exit">Выйти</string>
+    <string name="title_activity_about_accepted_order">AboutAcceptedOrderActivity</string>
+
+    <!--FCM-->
+    <string name="default_notification_channel_id">ftst_channel_id</string>
+    <string name="fcm_message"> Новое сообщение </string>
+
+</resources>
