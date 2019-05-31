@@ -39,7 +39,7 @@ public class Backend {
     }
 
     public void sendToken(String tid, String token, String fcmToken) {
-        Call<ServerResponse> call = getApi().sendMyFcmToken(tid, token, fcmToken);
+        Call<ServerResponse> call = getApi().sendFcmToken(tid, token, fcmToken);
         if (isNetworkOnline()) {
             try {
                 call.enqueue(new Callback<ServerResponse>() {

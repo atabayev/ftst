@@ -38,5 +38,9 @@
     <!--FCM-->
     <string name="default_notification_channel_id">ftst_channel_id</string>
     <string name="fcm_message"> Новое сообщение </string>
+    <string name="title_1">Новый заказ</string>
+    <string name="body_1">Поступил новый заказ</string>
+    <string name="title_2">Заказ завершен</string>
+    <string name="body_2">Проект успешно завершен</string>
 
 </resources>

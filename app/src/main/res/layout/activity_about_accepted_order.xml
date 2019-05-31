@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/activityBg"
+    android:background="@drawable/background"
     tools:context=".ui.AboutNewOrderActivity">
 
 
@@ -17,27 +17,28 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/dim_10sp"
-            android:paddingLeft="@dimen/dim_10sp"
-            android:paddingTop="@dimen/dim_10sp"
-            android:paddingEnd="@dimen/dim_10sp"
-            android:paddingRight="@dimen/dim_10sp"
-            android:paddingBottom="@dimen/dim_10sp"
+            android:paddingStart="5sp"
+            android:paddingLeft="5sp"
+            android:paddingTop="5sp"
+            android:paddingEnd="5sp"
+            android:paddingRight="5sp"
+            android:paddingBottom="5sp"
+            android:layout_marginBottom="50sp"
+            android:background="@drawable/border"
+            android:layout_marginStart="@dimen/dim_10sp"
+            android:layout_marginEnd="@dimen/dim_10sp"
             android:stretchColumns="*">
 
             <TableRow
                 android:background="@color/tvTextColor"
-                android:paddingStart="40sp"
-                android:paddingLeft="40sp"
-                android:paddingEnd="40sp"
-                android:paddingRight="40sp">
+                android:paddingStart="10sp"
+                android:paddingEnd="10sp">
 
                 <TextView
                     android:id="@+id/aoaID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_8sp"
-                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="@string/aoa_id"
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -46,8 +47,7 @@
                     android:id="@+id/aoaIdText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_10sp"
-                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="20180306301"
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -55,17 +55,14 @@
 
             <TableRow
                 android:background="@color/tvHintTextColor"
-                android:paddingStart="40sp"
-                android:paddingLeft="40sp"
-                android:paddingEnd="40sp"
-                android:paddingRight="40sp">
+                android:paddingStart="10sp"
+                android:paddingEnd="10sp">
 
                 <TextView
                     android:id="@+id/aoaDeadline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_8sp"
-                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="@string/aoa_deadline"
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -74,8 +71,7 @@
                     android:id="@+id/aoaDeadlineText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_10sp"
-                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="10.09.2018"
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -83,17 +79,14 @@
 
             <TableRow
                 android:background="@color/tvTextColor"
-                android:paddingStart="40sp"
-                android:paddingLeft="40sp"
-                android:paddingEnd="40sp"
-                android:paddingRight="40sp">
+                android:paddingStart="10sp"
+                android:paddingEnd="10sp">
 
                 <TextView
                     android:id="@+id/aoaLanguage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_8sp"
-                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="@string/aoa_language"
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -102,8 +95,7 @@
                     android:id="@+id/aoaLanguageText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_10sp"
-                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="Русский - Английский"
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -111,17 +103,14 @@
 
             <TableRow
                 android:background="@color/tvHintTextColor"
-                android:paddingStart="40sp"
-                android:paddingLeft="40sp"
-                android:paddingEnd="40sp"
-                android:paddingRight="40sp">
+                android:paddingStart="10sp"
+                android:paddingEnd="10sp">
 
                 <TextView
                     android:id="@+id/aoaDirection"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_8sp"
-                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="@string/aoa_direction"
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -130,8 +119,7 @@
                     android:id="@+id/aoaDirectionText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_10sp"
-                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="ИТ, Политика"
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -139,17 +127,14 @@
 
             <TableRow
                 android:background="@color/tvTextColor"
-                android:paddingStart="40sp"
-                android:paddingLeft="40sp"
-                android:paddingEnd="40sp"
-                android:paddingRight="40sp">
+                android:paddingStart="10sp"
+                android:paddingEnd="10sp">
 
                 <TextView
                     android:id="@+id/aoaPageCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_8sp"
-                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="@string/aoa_page_count"
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -158,8 +143,7 @@
                     android:id="@+id/aoaPageCountText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_10sp"
-                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="00 стр."
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -167,17 +151,13 @@
 
             <TableRow
                 android:background="@color/tvHintTextColor"
-                android:paddingStart="40sp"
-                android:paddingLeft="40sp"
-                android:paddingEnd="40sp"
-                android:paddingRight="40sp">
+                android:paddingStart="10sp"
+                android:paddingEnd="10sp">
 
                 <TextView
                     android:id="@+id/aoaPrice"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_8sp"
-                    android:layout_marginLeft="@dimen/dim_8sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="@string/aoa_price"
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -186,8 +166,7 @@
                     android:id="@+id/aoaPriceText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_10sp"
-                    android:layout_marginLeft="@dimen/dim_10sp"
+                    android:fontFamily="@font/caviar_dreams"
                     android:text="00000 тенге"
                     android:textColor="@color/activityBg"
                     android:textSize="@dimen/dim_14sp" />
@@ -197,54 +176,60 @@
 
         <Button
             android:id="@+id/aoa_btn_dwn"
+            android:drawableEnd="@drawable/tg"
+            android:drawablePadding="-15sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30sp"
             android:layout_marginLeft="30sp"
-            android:layout_marginTop="15sp"
             android:layout_marginEnd="30sp"
             android:layout_marginRight="30sp"
-            android:layout_marginBottom="10sp"
             android:background="@drawable/bg_btn"
+            android:fontFamily="@font/caviar_dreams"
             android:paddingStart="5sp"
             android:paddingLeft="5sp"
             android:paddingTop="5sp"
-            android:paddingEnd="5sp"
-            android:paddingRight="5sp"
+            android:paddingEnd="@dimen/dim_10sp"
+            android:paddingRight="@dimen/dim_10sp"
             android:paddingBottom="5sp"
             android:text="@string/aoa_btn_download"
-            android:textColor="@color/btnTextColor" />
+            android:textColor="@color/btnTextColor"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="2sp"
             android:layout_marginStart="10sp"
             android:layout_marginLeft="10sp"
-            android:layout_marginTop="30sp"
+            android:layout_marginTop="20sp"
             android:layout_marginEnd="10sp"
             android:layout_marginRight="10sp"
-            android:layout_marginBottom="30sp"
+            android:layout_marginBottom="20sp"
             android:background="@color/colorAccent" />
 
         <Button
             android:id="@+id/aoa_btn_finish"
+            android:drawableEnd="@drawable/send"
+            android:drawablePadding="-15sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30sp"
             android:layout_marginLeft="30sp"
-            android:layout_marginTop="15sp"
             android:layout_marginEnd="30sp"
             android:layout_marginRight="30sp"
-            android:layout_marginBottom="10sp"
             android:background="@drawable/bg_btn"
+            android:fontFamily="@font/caviar_dreams"
             android:paddingStart="5sp"
             android:paddingLeft="5sp"
             android:paddingTop="5sp"
-            android:paddingEnd="5sp"
-            android:paddingRight="5sp"
+            android:paddingEnd="@dimen/dim_10sp"
+            android:paddingRight="@dimen/dim_10sp"
             android:paddingBottom="5sp"
             android:text="@string/aoa_btn_finish"
-            android:textColor="@color/btnTextColor" />
+            android:textColor="@color/btnTextColor"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
 
     </LinearLayout>

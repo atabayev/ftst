@@ -15,12 +15,17 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
+import kz.ftsystem.yel.ftst.App;
 import kz.ftsystem.yel.ftst.Interfaces.MyCallback;
 import kz.ftsystem.yel.ftst.R;
 import kz.ftsystem.yel.ftst.backend.Backend;
+import kz.ftsystem.yel.ftst.backend.MessageEvent;
 import kz.ftsystem.yel.ftst.backend.MyConstants;
 import kz.ftsystem.yel.ftst.backend.Order;
 import kz.ftsystem.yel.ftst.fragments.NewOrdersFragment;
@@ -42,8 +47,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
         }
 
         if (remoteMessage.getNotification() != null) {
-            sendNotification(remoteMessage.getNotification().getTitle(),
-                    remoteMessage.getNotification().getBody());
+            if (((App) getApplicationContext()).isAppForeground()) {
+
+                if (Objects.requireNonNull(remoteMessage.getNotification().getTitle()).equals(getString(R.string.title_1)) ||
+                        Objects.requireNonNull(remoteMessage.getNotification().getTitle()).equals(getString(R.string.title_2))) {
+                    EventBus.getDefault().post(new MessageEvent("1"));
+                }
+
+            } else {
+                String msgTitle = remoteMessage.getNotification().getTitle();
+                String msgBody = remoteMessage.getNotification().getBody();
+                sendNotification(msgTitle, msgBody);
+            }
         }
     }
 
@@ -73,24 +88,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService impleme
     }
 
 
-    private void sendNotification(String title, String msg) {
-        Log.d(MyConstants.TAG, "send notification");
-        String msgTitle = title;
-        String msgBody = msg;
-//        switch (title) {
-//            case "1":
-//                msgTitle = getString(R.string.title_1);
-//                msgBody = getString(R.string.body_1);
-//                break;
-//            case "2":
-//                msgTitle = getString(R.string.title_2);
-//                msgBody = getString(R.string.body_2);
-//                break;
-//            case "3":
-//                msgTitle = getString(R.string.title_3);
-//                msgBody = getString(R.string.body_3);
-//                break;
-//        }
+    private void sendNotification(String msgTitle, String msgBody) {
         Intent intent = new Intent(this, SplashScreenActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(

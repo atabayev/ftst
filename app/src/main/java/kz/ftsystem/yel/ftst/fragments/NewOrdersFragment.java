@@ -17,6 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import kz.ftsystem.yel.ftst.adapter.DataRecyclerAdapterNewOrders;
+import kz.ftsystem.yel.ftst.backend.MessageEvent;
 import kz.ftsystem.yel.ftst.ui.AboutNewOrderActivity;
 import kz.ftsystem.yel.ftst.Interfaces.MyCallback;
 import kz.ftsystem.yel.ftst.R;
@@ -94,13 +99,26 @@ public class NewOrdersFragment extends Fragment implements DataRecyclerAdapterNe
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(MyConstants.TAG, "onResume");
+        backend = new Backend(context, this);
+        backend.getOrders(myId, myToken);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Log.d(MyConstants.TAG, "onStart");
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 
     @Override
@@ -117,11 +135,7 @@ public class NewOrdersFragment extends Fragment implements DataRecyclerAdapterNe
         }
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        unbinder.unbind();
-    }
+
 
     @Override
     public void onMore(Order order) {
@@ -149,7 +163,7 @@ public class NewOrdersFragment extends Fragment implements DataRecyclerAdapterNe
                 Toast.makeText(context, "Ошибка токена", Toast.LENGTH_SHORT).show();
                 break;
             case "no_orders":
-                Toast.makeText(context, "Нет новых заказов", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Нет новых заказов", Toast.LENGTH_SHORT).show();
                 List<Order> emptyOrdersList = new ArrayList<>();
                 recyclerAdapter.updateRecyclerView(emptyOrdersList);
                 break;
@@ -166,6 +180,10 @@ public class NewOrdersFragment extends Fragment implements DataRecyclerAdapterNe
 
     @Override
     public void onRefresh() {
+       refresh();
+    }
+
+    private void refresh() {
         backend = new Backend(context, this);
         if (backend.isNetworkOnline()) {
             swipeRefreshLayout.setRefreshing(true);
@@ -173,6 +191,19 @@ public class NewOrdersFragment extends Fragment implements DataRecyclerAdapterNe
         } else {
             Toast.makeText(context, "Нет связи с интернетом", Toast.LENGTH_SHORT).show();
         }
+    }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(MessageEvent event) {
+        if (event.message.equals("1")) {
+            refresh();
+        }
+
+    }
+
+    // This method will be called when a SomeOtherEvent is posted
+    @Subscribe
+    public void handleSomethingElse(MessageEvent event) {
+//        doSomethingWith(event);
     }
 }

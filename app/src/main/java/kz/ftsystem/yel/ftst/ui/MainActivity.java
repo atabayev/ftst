@@ -1,6 +1,7 @@
 package kz.ftsystem.yel.ftst.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -81,6 +82,10 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
             case R.id.menu_settings:
                 return true;
             case R.id.menu_exit:
+                Intent intent;
+                intent = new Intent(this, AuthenticationActivity.class);
+                startActivity(intent);
+
                 return true;
         }
         return super.onOptionsItemSelected(item);

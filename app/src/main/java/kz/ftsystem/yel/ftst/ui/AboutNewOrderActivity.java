@@ -18,11 +18,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import kz.ftsystem.yel.ftst.Interfaces.MyCallback;
 import kz.ftsystem.yel.ftst.R;
-import kz.ftsystem.yel.ftst.adapter.DataRecyclerAdapterAcceptedOrders;
 import kz.ftsystem.yel.ftst.backend.Backend;
 import kz.ftsystem.yel.ftst.backend.MyConstants;
 import kz.ftsystem.yel.ftst.backend.Order;
-import kz.ftsystem.yel.ftst.db.Orders;
 
 public class AboutNewOrderActivity extends AppCompatActivity implements MyCallback {
 
@@ -64,7 +62,6 @@ public class AboutNewOrderActivity extends AppCompatActivity implements MyCallba
 
     @OnClick({R.id.ao_btn_dwn, R.id.ao_btn_accept, R.id.ao_btn_skip})
     public void onClick(View view) {
-//        Intent intent;
         SharedPreferences preferences = getSharedPreferences(MyConstants.APP_PREFERENCES, Context.MODE_PRIVATE);
         String myId = preferences.getString(MyConstants.PREFERENCE_MY_ID, "");
         String myToken = preferences.getString(MyConstants.PREFERENCE_MY_TOKEN, "");
@@ -98,15 +95,15 @@ public class AboutNewOrderActivity extends AppCompatActivity implements MyCallba
                         Toast.LENGTH_SHORT).show();
                 break;
             case "tao_ok":
-                Orders tmpOrder = new Orders();
-                tmpOrder.setId(tvID.getText().toString());
-                tmpOrder.setDeadline(tvDeadline.getText().toString());
-                tmpOrder.setLanguage(tvLanguage.getText().toString());
-                tmpOrder.setDirection(tvDirection.getText().toString());
-                tmpOrder.setPageCount(tvPageCount.getText().toString());
-                tmpOrder.setPrice(tvPrice.getText().toString());
-                DataRecyclerAdapterAcceptedOrders acceptedOrdersAdapter = new DataRecyclerAdapterAcceptedOrders();
-                acceptedOrdersAdapter.insertOrder(tmpOrder);
+//                Orders tmpOrder = new Orders();
+//                tmpOrder.setId(tvID.getText().toString());
+//                tmpOrder.setDeadline(tvDeadline.getText().toString());
+//                tmpOrder.setLanguage(tvLanguage.getText().toString());
+//                tmpOrder.setDirection(tvDirection.getText().toString());
+//                tmpOrder.setPageCount(tvPageCount.getText().toString());
+//                tmpOrder.setPrice(tvPrice.getText().toString());
+//                DataRecyclerAdapterAcceptedOrders acceptedOrdersAdapter = new DataRecyclerAdapterAcceptedOrders();
+//                acceptedOrdersAdapter.insertOrder(tmpOrder);
                 Toast.makeText(this, "Заказ оформлен", Toast.LENGTH_SHORT).show();
                 Intent intent1 = new Intent();
                 intent1.putExtra("result", "1");
@@ -140,4 +137,6 @@ public class AboutNewOrderActivity extends AppCompatActivity implements MyCallba
                 Toast.makeText(this, data.get("response"), Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }

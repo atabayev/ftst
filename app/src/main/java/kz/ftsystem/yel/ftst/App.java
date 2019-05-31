@@ -1,27 +1,23 @@
 package kz.ftsystem.yel.ftst;
 
+import android.app.Activity;
 import android.app.Application;
 import android.arch.persistence.room.Room;
+import android.os.Bundle;
 
 import com.facebook.stetho.Stetho;
 
-import kz.ftsystem.yel.ftst.db.AppDatabase;
-
-public class App extends Application {
+public class App extends Application implements Application.ActivityLifecycleCallbacks {
 
     public static App instance;
 
-    private AppDatabase database;
-
+    private int activityCount = 0;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         instance = this;
-        database = Room.databaseBuilder(this, AppDatabase.class, "db_orders")
-//                .allowMainThreadQueries() // TODO: cделать запрос к базе асинхронным
-                .build();
 
         // Create an InitializerBuilder
         Stetho.InitializerBuilder initializerBuilder =
@@ -42,13 +38,50 @@ public class App extends Application {
 
         // Initialize Stetho with the Initializer
         Stetho.initialize(initializer);
+
+        registerActivityLifecycleCallbacks(this);
     }
 
     public static App getInstance() {
         return instance;
     }
 
-    public AppDatabase getDatabase() {
-        return database;
+    public boolean isAppForeground() {
+        return activityCount > 0;
+    }
+
+    @Override
+    public void onActivityStopped(Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityStarted(Activity activity) {
+
+    }
+
+    @Override
+    public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+    }
+
+    @Override
+    public void onActivityResumed(Activity activity) {
+        activityCount++;
+    }
+
+    @Override
+    public void onActivityPaused(Activity activity) {
+        activityCount--;
+    }
+
+    @Override
+    public void onActivityDestroyed(Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+
     }
 }

@@ -1,7 +1,6 @@
 package kz.ftsystem.yel.ftst.fragments;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,12 +30,10 @@ import kz.ftsystem.yel.ftst.Interfaces.MyCallback;
 import kz.ftsystem.yel.ftst.R;
 import kz.ftsystem.yel.ftst.adapter.DataRecyclerAdapterAcceptedOrders;
 import kz.ftsystem.yel.ftst.backend.Backend;
+import kz.ftsystem.yel.ftst.backend.MessageEvent;
 import kz.ftsystem.yel.ftst.backend.MyConstants;
 import kz.ftsystem.yel.ftst.backend.Order;
-import kz.ftsystem.yel.ftst.db.Orders;
 import kz.ftsystem.yel.ftst.ui.AboutAcceptedOrderActivity;
-import kz.ftsystem.yel.ftst.ui.AboutNewOrderActivity;
-//import kz.ftsystem.yel.ftst.db.DatabaseHelper;
 
 
 public class AcceptedOrdersFragment extends Fragment implements DataRecyclerAdapterAcceptedOrders.OnMoreListener, MyCallback, SwipeRefreshLayout.OnRefreshListener {
@@ -81,8 +82,6 @@ public class AcceptedOrdersFragment extends Fragment implements DataRecyclerAdap
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        recyclerAdapter.loadOrders();
-
         backend = new Backend(context, this);
         backend.getMyOrders(myId, myToken);
 
@@ -93,11 +92,21 @@ public class AcceptedOrdersFragment extends Fragment implements DataRecyclerAdap
     @Override
     public void onResume() {
         super.onResume();
-        recyclerAdapter.loadOrders();
         backend = new Backend(context, this);
         backend.getMyOrders(myId, myToken);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
 
     @Override
     public void onDestroy() {
@@ -106,15 +115,17 @@ public class AcceptedOrdersFragment extends Fragment implements DataRecyclerAdap
     }
 
     @Override
-    public void onMore(Orders orders) {
-        Intent intent = new Intent(context, AboutAcceptedOrderActivity.class);
-        intent.putExtra("id", orders.getId());
-        intent.putExtra("deadline", orders.getDeadline());
-        intent.putExtra("language", orders.getLanguage());
-        intent.putExtra("direction", orders.getDirection());
-        intent.putExtra("page_count", orders.getPageCount());
-        intent.putExtra("price", orders.getPrice());
-        startActivity(intent);
+    public void onMore(Order orders) {
+        if (orders.getStatus().equals("4")) {
+            Intent intent = new Intent(context, AboutAcceptedOrderActivity.class);
+            intent.putExtra("id", orders.getId());
+            intent.putExtra("deadline", orders.getDeadline());
+            intent.putExtra("language", orders.getLanguage());
+            intent.putExtra("direction", orders.getDirection());
+            intent.putExtra("page_count", orders.getPageCount());
+            intent.putExtra("price", orders.getPrice());
+            startActivity(intent);
+        }
     }
 
 
@@ -134,23 +145,13 @@ public class AcceptedOrdersFragment extends Fragment implements DataRecyclerAdap
                 Toast.makeText(context, "Ошибка токена", Toast.LENGTH_SHORT).show();
                 break;
             case "no_orders":
-//                Toast.makeText(context, "У Вас нет принятых заказов", Toast.LENGTH_SHORT).show();
-                List<Orders> emptyDbOrdersList = new ArrayList<>();
-                recyclerAdapter.updateRecyclerView(emptyDbOrdersList);
+                List<Order> emptyOrdersList = new ArrayList<>();
+                recyclerAdapter.updateRecyclerView(emptyOrdersList);
                 break;
             case "ok":
-                List<Orders> dbOrdersList = new ArrayList<>();
-                for (Order ord : orders) {
-                    Orders dbOrd = new Orders();
-                    dbOrd.setId(ord.getId());
-                    dbOrd.setDeadline(ord.getDeadline());
-                    dbOrd.setPrice(ord.getPrice());
-                    dbOrd.setLanguage(ord.getLanguage());
-                    dbOrd.setPageCount(ord.getPageCount());
-                    dbOrd.setDirection(ord.getDirection());
-                    dbOrdersList.add(dbOrd);
-                }
-                recyclerAdapter.updateRecyclerView(dbOrdersList);
+                List<Order> ordersList;
+                ordersList = orders;
+                recyclerAdapter.updateRecyclerView(ordersList);
                 break;
         }
         swipeRefreshLayout.setRefreshing(false);
@@ -159,9 +160,26 @@ public class AcceptedOrdersFragment extends Fragment implements DataRecyclerAdap
 
     @Override
     public void onRefresh() {
+        refresh();
+    }
+
+    private void refresh() {
         swipeRefreshLayout.setRefreshing(true);
         backend.getMyOrders(myId, myToken);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(MessageEvent event) {
+        if (event.message.equals("1")) {
+            refresh();
+        }
+
+    }
+
+    // This method will be called when a SomeOtherEvent is posted
+    @Subscribe
+    public void handleSomethingElse(MessageEvent event) {
+//        doSomethingWith(event);
+    }
 
 }

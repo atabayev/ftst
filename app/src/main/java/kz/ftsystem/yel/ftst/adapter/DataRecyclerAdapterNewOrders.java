@@ -15,8 +15,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import kz.ftsystem.yel.ftst.R;
 import kz.ftsystem.yel.ftst.backend.Order;
-//import kz.ftsystem.yel.ftst.db.DatabaseHelper;
-//import kz.ftsystem.yel.ftst.db.model.DataModel;
 
 
 public class DataRecyclerAdapterNewOrders extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -44,7 +42,7 @@ public class DataRecyclerAdapterNewOrders extends RecyclerView.Adapter<RecyclerV
 
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
         final NewsViewHolder viewHolder = (NewsViewHolder) holder;
         viewHolder.id.setText(orders.get(position).getId());
         viewHolder.deadline.setText(orders.get(position).getDeadline());

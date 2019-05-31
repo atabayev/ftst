@@ -4,7 +4,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface API {
@@ -69,14 +68,6 @@ public interface API {
             @Field("tid") String tid,
             @Field("token") String oid,
             @Field("oid") String token);
-
-
-    @FormUrlEncoded
-    @POST("management/set_token/")
-    Call<ServerResponse> sendMyFcmToken(
-            @Field("tid") String tid,
-            @Field("token") String token,
-            @Field("fcm_token") String fcmToken);
 
 
     @FormUrlEncoded

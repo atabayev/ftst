@@ -12,10 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+
         <activity
             android:name=".ui.SplashScreenActivity"
             android:theme="@style/SplashTheme">
@@ -25,10 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".ui.AuthenticationActivity" />
+
         <activity
             android:name=".ui.AboutNewOrderActivity"
             android:theme="@style/SplashTheme" />
+
         <activity
             android:name=".ui.AboutAcceptedOrderActivity"
             android:label="@string/title_activity_about_accepted_order"

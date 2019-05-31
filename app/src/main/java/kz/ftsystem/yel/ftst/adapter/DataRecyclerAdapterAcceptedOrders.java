@@ -1,8 +1,8 @@
 package kz.ftsystem.yel.ftst.adapter;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,57 +15,20 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kz.ftsystem.yel.ftst.R;
-import kz.ftsystem.yel.ftst.backend.MyConstants;
-import kz.ftsystem.yel.ftst.db.AsyncWorkWithDatabase;
-import kz.ftsystem.yel.ftst.db.Orders;
+import kz.ftsystem.yel.ftst.backend.Order;
 
 public class DataRecyclerAdapterAcceptedOrders extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public List<Orders> orders = new ArrayList<>();
-//    private List<Orders> dbOrders = new ArrayList<>();
-
-    private DataRecyclerAdapterAcceptedOrders.OnMoreListener onMoreListener;
-//    private OrdersDAO db = App.getInstance().getDatabase().ordersDAO();
+    private List<Order> orders = new ArrayList<>();
+    private OnMoreListener onMoreListener;
 
 
     public DataRecyclerAdapterAcceptedOrders() {
     }
 
-    public void updateRecyclerView(List<Orders> orders_) {
-        AsyncWorkWithDatabase.UpdateDatabase updateDatabase = new AsyncWorkWithDatabase.UpdateDatabase();
-        updateDatabase.execute(orders_);
-        try {
-            orders = updateDatabase.get();
-        } catch (Exception e) {
-            Log.d(MyConstants.TAG, e.toString());
-        }
-
-//        db.clearTable();
-//        for (Orders ord : _orders) {
-//            db.insert(ord);
-//        }
-//        orders.clear();
-//        orders = db.getAll();
-//        orders.clear();
-        notifyDataSetChanged();
-    }
-
-    public void loadOrders() {
-        AsyncWorkWithDatabase.GetFromDatabase getFromDatabase = new AsyncWorkWithDatabase.GetFromDatabase();
-        getFromDatabase.execute();
-        try {
-            orders = getFromDatabase.get();
-        } catch (Exception e) {
-            Log.d(MyConstants.TAG, e.toString());
-        }
-//        orders = db.getAll();
-        notifyDataSetChanged();
-    }
-
-    public void insertOrder(Orders order) {
-        AsyncWorkWithDatabase.InsertToDatabase insertToDatabase = new AsyncWorkWithDatabase.InsertToDatabase();
-        insertToDatabase.execute(order);
-        orders.add(order);
+    public void updateRecyclerView(List<Order> _orders) {
+        orders.clear();
+        orders = _orders;
         notifyDataSetChanged();
     }
 
@@ -74,19 +37,31 @@ public class DataRecyclerAdapterAcceptedOrders extends RecyclerView.Adapter<Recy
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-        return new DataRecyclerAdapterAcceptedOrders.NewsViewHolder(view);
+        return new NewsViewHolder(view);
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
-        final DataRecyclerAdapterAcceptedOrders.NewsViewHolder viewHolder = (DataRecyclerAdapterAcceptedOrders.NewsViewHolder) holder;
+
+        final NewsViewHolder viewHolder = (NewsViewHolder) holder;
         viewHolder.id.setText(orders.get(position).getId());
+        if (orders.get(position).getStatus().equals("5")) {
+            viewHolder.id.setTextColor(Color.DKGRAY);
+            viewHolder.pageCountPages.setTextColor(Color.DKGRAY);
+        }
         viewHolder.deadline.setText(orders.get(position).getDeadline());
         viewHolder.language.setText(orders.get(position).getLanguage());
         viewHolder.direction.setText(orders.get(position).getDirection());
         viewHolder.pageCount.setText(orders.get(position).getPageCount());
         viewHolder.price.setText(orders.get(position).getPrice());
+        if (orders.get(position).getStatus().equals("5")) {
+            viewHolder.deadline.setTextColor(Color.DKGRAY);
+            viewHolder.language.setTextColor(Color.DKGRAY);
+            viewHolder.direction.setTextColor(Color.DKGRAY);
+            viewHolder.pageCount.setTextColor(Color.DKGRAY);
+            viewHolder.price.setTextColor(Color.DKGRAY);
+        }
     }
 
 
@@ -107,28 +82,32 @@ public class DataRecyclerAdapterAcceptedOrders extends RecyclerView.Adapter<Recy
         public TextView direction;
         @BindView(R.id.tvPageCount)
         public TextView pageCount;
+        @BindView(R.id.tvPageCountPages)
+        public TextView pageCountPages;
         @BindView(R.id.tvPrice)
         public TextView price;
         @BindView(R.id.linearLayout)
         public LinearLayout linearLayout;
 
-
         private NewsViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
 
-            linearLayout.setOnClickListener(view -> onMoreListener.onMore(orders.get(getAdapterPosition())));
+            linearLayout.setOnClickListener(view -> {
+                onMoreListener.onMore(orders.get(getAdapterPosition()));
+            });
         }
     }
 
 
-    public void setOnMoreListener(DataRecyclerAdapterAcceptedOrders.OnMoreListener onMoreListener) {
+    public void setOnMoreListener(OnMoreListener onMoreListener) {
         this.onMoreListener = onMoreListener;
     }
 
 
+
     public interface OnMoreListener {
-        void onMore(Orders order);
+        void onMore(Order order);
     }
 
 }

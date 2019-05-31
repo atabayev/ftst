@@ -1,15 +1,11 @@
 package kz.ftsystem.yel.ftst.ui;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,11 +20,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import kz.ftsystem.yel.ftst.Interfaces.MyCallback;
 import kz.ftsystem.yel.ftst.R;
-import kz.ftsystem.yel.ftst.adapter.DataRecyclerAdapterAcceptedOrders;
 import kz.ftsystem.yel.ftst.backend.Backend;
 import kz.ftsystem.yel.ftst.backend.MyConstants;
 import kz.ftsystem.yel.ftst.backend.Order;
-import kz.ftsystem.yel.ftst.db.Orders;
 
 public class AboutAcceptedOrderActivity extends AppCompatActivity implements MyCallback {
 
@@ -84,26 +78,18 @@ public class AboutAcceptedOrderActivity extends AppCompatActivity implements MyC
             builder.setTitle("Завершить проект?");
             builder.setMessage("Вы отправили результат перевода на почту менеджера?");
             builder.setCancelable(true);
-            builder.setPositiveButton("Отправил", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    SharedPreferences preferences = getSharedPreferences(MyConstants.APP_PREFERENCES, Context.MODE_PRIVATE);
-                    String myId = preferences.getString(MyConstants.PREFERENCE_MY_ID, "");
-                    String myToken = preferences.getString(MyConstants.PREFERENCE_MY_TOKEN, "");
-                    String orderId = tvID.getText().toString();
-                    Backend backend = new Backend(AboutAcceptedOrderActivity.this,
-                            AboutAcceptedOrderActivity.this);
-                    backend.completeOrder(myId, myToken, orderId);
-                }
+            builder.setPositiveButton("Отправил", (dialogInterface, i) -> {
+                SharedPreferences preferences = getSharedPreferences(MyConstants.APP_PREFERENCES, Context.MODE_PRIVATE);
+                String myId = preferences.getString(MyConstants.PREFERENCE_MY_ID, "");
+                String myToken = preferences.getString(MyConstants.PREFERENCE_MY_TOKEN, "");
+                String orderId = tvID.getText().toString();
+                Backend backend = new Backend(AboutAcceptedOrderActivity.this,
+                        AboutAcceptedOrderActivity.this);
+                backend.completeOrder(myId, myToken, orderId);
             });
-            builder.setNegativeButton("Нет еще", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Toast.makeText(AboutAcceptedOrderActivity.this,
-                            "Проект не завершен!",
-                            Toast.LENGTH_LONG).show();
-                }
-            });
+            builder.setNegativeButton("Нет еще", (dialogInterface, i) -> Toast.makeText(AboutAcceptedOrderActivity.this,
+                    "Проект не завершен!",
+                    Toast.LENGTH_LONG).show());
             AlertDialog dialog = builder.create();
             dialog.show();
         }

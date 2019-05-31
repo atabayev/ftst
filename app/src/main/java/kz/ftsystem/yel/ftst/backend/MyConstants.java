@@ -31,8 +31,8 @@ public class MyConstants {
     public static String PREFERENCE_MY_ID = "my_id";
     public static String PREFERENCE_MY_TOKEN = "my_token";
 
-    public static String BASE_URL = "http://151.248.123.14:8000/";
-//    public static String BASE_URL = "http://10.0.3.2:8000/";
+    public static String BASE_URL = "http://134.0.115.28:8000/";
+//    public static String BASE_URL = "http://10.0.2.2:8000/";
 
 //    public static final String CONTENT_AUTHORITY = "kz.ftsystem.yel.ftst";
 //    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY );

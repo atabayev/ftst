@@ -23,6 +23,9 @@ public class Order {
     @SerializedName("price")
     @Expose
     private String price;
+    @SerializedName("status")
+    @Expose
+    private String status;
 
     public String getId() {
         return id;
@@ -72,4 +75,11 @@ public class Order {
         this.price = price;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
