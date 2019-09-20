@@ -18,11 +18,6 @@ import kz.ftsystem.yel.ftst.R;
 import kz.ftsystem.yel.ftst.backend.Backend;
 import kz.ftsystem.yel.ftst.backend.MyConstants;
 import kz.ftsystem.yel.ftst.backend.Order;
-import ru.tinkoff.decoro.MaskImpl;
-import ru.tinkoff.decoro.slots.PredefinedSlots;
-import ru.tinkoff.decoro.slots.Slot;
-import ru.tinkoff.decoro.watchers.FormatWatcher;
-import ru.tinkoff.decoro.watchers.MaskFormatWatcher;
 
 
 public class AuthenticationActivity extends Activity implements MyCallback {
