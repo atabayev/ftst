@@ -3,9 +3,10 @@ package kz.ftsystem.yel.ftst.backend;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,7 +19,6 @@ import java.io.OutputStream;
 import java.util.HashMap;
 
 import kz.ftsystem.yel.ftst.Interfaces.MyCallback;
-import kz.ftsystem.yel.ftst.R;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -54,7 +54,7 @@ public class Backend {
                     }
                 });
             } catch (Exception e) {
-
+                Log.d(MyConstants.TAG, "Error sendToken: " + e.toString());
             }
         }
     }

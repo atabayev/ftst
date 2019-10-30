@@ -2,7 +2,6 @@ package kz.ftsystem.yel.ftst;
 
 import android.app.Activity;
 import android.app.Application;
-import android.arch.persistence.room.Room;
 import android.os.Bundle;
 
 import com.facebook.stetho.Stetho;
